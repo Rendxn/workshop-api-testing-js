@@ -12,7 +12,7 @@ describe('Github Api Test', () => {
       const response = await agent
         .get(`${urlBase}/repos/${githubUserName}/${repository}`)
         .auth('token', process.env.ACCESS_TOKEN)
-        .set('User-Agent', 'agent');
+        .set('User-Agent', 'superagent');
 
       expect(response.status).to.equal(statusCode.OK);
       expect(response.body.description).equal(
@@ -24,7 +24,7 @@ describe('Github Api Test', () => {
       agent
         .get(`${urlBase}/repos/${githubUserName}/${repository}`)
         .query(`access_token=${process.env.ACCESS_TOKEN}`)
-        .set('User-Agent', 'agent')
+        .set('User-Agent', 'superagent')
         .then((response) => {
           expect(response.status).to.equal(statusCode.OK);
           expect(response.body.description).equal(
